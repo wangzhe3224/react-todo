@@ -1,31 +1,22 @@
-import AddToDo from './containers/AddToDo';
+import { AddToDo } from './containers/AddToDo';
 import ToDoListContainer from './containers/ToDoListContainer';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import NotMatch from './components/NotFound'
 import React from 'react';
 import { MakeRouteWithSubRoutes } from './MakeRouteWithSubRoutes';
 
 const routes = [
-  {
-    path: "/",
-    component: ToDoListContainer
-  },
+  // Strange here... if I put "/" as the first item of the list..
+  // the nacigation does not work, always render the root page..
   {
     path: "/new-item",
     component: AddToDo
   },
-  // {
-  //   path: "/Topics",
-  //   component: TopicList,
-  //   routes: [
-  //     {
-  //       path: "/Topics/:topicId",
-  //       component: TopicDetail,
-  //       routes: fetchXYZApiRoutes,
-  //     },
-  //   ]
-  // },
+  {
+    path: "/",
+    component: ToDoListContainer
+  },
   {
     path: "/:anythingNotMatch",
     component: NotMatch,
@@ -34,7 +25,7 @@ const routes = [
 
 
 export const Routes = (props) => {
-  console.clear();
+  console.log('In Routes Function: ' + JSON.stringify(routes));
   console.log(routes);
   return (
     <div>
