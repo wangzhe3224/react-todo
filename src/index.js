@@ -22,7 +22,8 @@ store.dispatch(loadToDoList());
 
 render(
   <Provider store={store}>
-    <BrowserRouter>
+    {/* Avoid routing problem in Github Page */}
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App />
     </BrowserRouter>
   </Provider>,
